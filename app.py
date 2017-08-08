@@ -69,7 +69,7 @@ def processIntentName(req):
     return intent
 
 def processsession(req):
-    session_id = parameters.get("sessionId")
+    session_id = req.get("sessionId")
     print(session_Id)
     return session_id
 

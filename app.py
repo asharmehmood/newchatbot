@@ -1,6 +1,6 @@
 
 #!/usr/bin/env python
-
+import math
 import urllib
 from urllib.parse import urlparse, urlencode
 from urllib.request import urlopen, Request
@@ -39,6 +39,7 @@ def processRequest(req):
     price_unit=processPriceUnit(req)
     max_area=processAreaMax(req)
     unit_property=processUnits(req)
+    session=processsession(req)
 
     maximum_value=convertMaximum(maximum_valu, price_unit)
     print(maximum_value)
@@ -59,7 +60,13 @@ def processRequest(req):
     res2 = makeWebhookResult(data)
     print('res2:',res2)
     return res2
-
+def processsession(req):
+    global session
+    result = req.get("result")
+    parameters = result.get("parameters")
+    session_id = parameters.get("sessionId")
+    session = session_id.get("sessionId")
+    return session
 def processIntentName(req):
     result = req.get("result")
     parameters = result.get("metadata")
@@ -139,13 +146,15 @@ def convertMaximum(pric, unit):
     print(price)
     return str(price)
 
+
+
 def makeWebhookResult(data):
      i=0
      length=len(data)
      speech_data = "Here are some properties with your choice. We have total of "+str(length)+" records of your interest in city  "+city+"."
      text_data = "Here are some properties with your choice. We have total of "+str(length)+" records of your interest in city  "+city+"."
      row_id=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
-     row_title=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
+     global row_title=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
      row_location=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
      row_price=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
      row_slug=['test','test1','test2','test3','test4','test5','test6','test7','test8','test9','test10']
@@ -163,9 +172,9 @@ def makeWebhookResult(data):
         row_number[i]=data[i]['number']
         row_image[i]=data[i]['image']
         row_city[i]=data[i]['city_name']
-        speech_data_parts="Here is record uk" + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
+        speech_data_parts="Here is record " + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
         speech_data = speech_data + speech_data_parts
-        text_data_parts ="Here is record uk" + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
+        text_data_parts ="Here is record " + session + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
         text_data = text_data + text_data_parts	
         i+=1
      print(row_title[0])

@@ -32,6 +32,7 @@ def processRequest(req):
     global city_names
     global QR
     global intent_name
+    global s_id
     intent_name=processIntentName(req)
     city_names=processlocation(req)
     property_type=processPropertyType(req)
@@ -39,7 +40,7 @@ def processRequest(req):
     price_unit=processPriceUnit(req)
     max_area=processAreaMax(req)
     unit_property=processUnits(req)
-    global s_id=processsession(req)
+    s_id=processsession(req)
 
     maximum_value=convertMaximum(maximum_valu, price_unit)
     print(maximum_value)

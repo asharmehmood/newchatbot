@@ -172,7 +172,7 @@ def recommendationalgo():
 		cominglist.update({val:rating})
 		rating=rating-2
 	comingdata.update({s_id:cominglist})
-
+	buy1.update(comingdata)
 	buy1={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':10,'666 Square Yard Plot for Sale in Islamabad F-10/2':8,'1 Kanal Plot for Sale in Islamabad F-10/2':6,'2300 Square Feet Apartment for Sale in Islamabad F-10':4,'15 Marla Plot for Sale in Islamabad F-10':2},
 	'1C2':{'24 Marla House for Sale in Islamabad G-6':10,'24 Marla House for Sale in Islamabad G-6/4':8,'24 Marla House for Sale in Islamabad G-6':6,'88 Marla House for Sale in Islamabad Sector G-6':4,'16 Marla House for Sale in Islamabad Sector G-6/4':2}
 	,'1C3':{'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':10,'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':8,'4 Marla House for Sale in Islamabad G-13':6,'5 Marla House for Sale in Islamabad G-13':4,'7 Marla House for Sale in Islamabad G-13':2},
@@ -190,7 +190,7 @@ def recommendationalgo():
 	'1C16':{'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':4,'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':6,'15 Marla Plot for Sale in Islamabad F-10':10,'10 Marla House for Sale in Islamabad E-11/2':8,'12 Marla House for Sale in Islamabad E-11/2':2},
 	'1C17':{'house no 5':10,'C type apartment for sale in i-11 isb':8,'C, D & E Type apartments for sale in G-11/3':6,'E Type Apartment for Sale':4,'15 Marla Plot for Sale in Islamabad F-10':2}}
 
-	buy1.update(comingdata)
+	
 
 
 	#taking average

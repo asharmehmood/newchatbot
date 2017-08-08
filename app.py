@@ -60,13 +60,7 @@ def processRequest(req):
     res2 = makeWebhookResult(data)
     print('res2:',res2)
     return res2
-#def processsession(req):
-    #global session
-    #result = req.get("result")
-    #parameters = result.get("parameters")
-    #session_id = parameters.get("sessionId")
-    #session = session_id.get("sessionId")
-    #return session
+
 def processIntentName(req):
     result = req.get("result")
     parameters = result.get("metadata")
@@ -79,8 +73,8 @@ def processsession(req):
     parameters = result.get("parameters")
     session_id = parameters.get("sessionId")
     session = session_id.get("sessionId")
-    #print("sessionid:", sessionId)
     return session
+
 def processlocation(req):
     global city
     result = req.get("result")
@@ -180,9 +174,9 @@ def makeWebhookResult(data):
         row_number[i]=data[i]['number']
         row_image[i]=data[i]['image']
         row_city[i]=data[i]['city_name']
-        speech_data_parts="Here is record " + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
+        speech_data_parts="Here is record uk" + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
         speech_data = speech_data + speech_data_parts
-        text_data_parts ="Here is record " + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
+        text_data_parts ="Here is record uk" + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
         text_data = text_data + text_data_parts	
         i+=1
      print(row_title[0])

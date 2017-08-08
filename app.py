@@ -162,6 +162,8 @@ def recommendationalgo():
 	housecount=0
 	hcountf=0
 	
+	str=''
+	
 	#s_id='1C11'
 	#row_title=['5 Marla House for Sale in Islamabad E-11/4','571 Square Feet Apartment for Sale in Islamabad Gulberg Greens','2 Kanal Residential Land for Sale in Islamabad Bahria Enclave','88 Marla House for Sale in Islamabad Sector G-6','10 Marla House for Sale in Islamabad E-11/2']
 	
@@ -332,7 +334,8 @@ def makeWebhookResult(data):
      print(row_title[0])
     
      strng= "suggestion:" + recommendationalgo()
-     text_data=text_data + strng   
+     text_data=text_data + strng
+	
      variable1=str(row_number[0])
      variable2=str(row_number[1])
      variable3=str(row_number[2])

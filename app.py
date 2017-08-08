@@ -70,7 +70,7 @@ def processIntentName(req):
 
 def processsession(req):
     session_id = req.get("sessionId")
-    print(session_Id)
+    #print(session_Id)
     return session_id
 
 def processlocation(req):

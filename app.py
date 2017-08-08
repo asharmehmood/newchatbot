@@ -69,13 +69,10 @@ def processIntentName(req):
     return intent
 
 def processsession(req):
-    global session
-    result = req.get("result")
-    parameters = result.get("parameters")
     session_id = parameters.get("sessionId")
-    session = session_id.get("sessionId")
-    #print("sessionid:", sessionId)
-    return session
+    print(session_Id)
+    return session_id
+
 def processlocation(req):
     global city
     result = req.get("result")

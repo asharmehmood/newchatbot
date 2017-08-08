@@ -330,7 +330,7 @@ def makeWebhookResult(data):
         i+=1
      print(row_title[0])
     
-     strng=recommendationalgo()
+     strng= "suggestion:" + recommendationalgo()
      text_data=text_data + strng   
      variable1=str(row_number[0])
      variable2=str(row_number[1])

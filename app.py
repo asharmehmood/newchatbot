@@ -278,8 +278,8 @@ def recommendationalgo():
 	
 	for val in suggestiondic:
 		if val==s_id:
-			st=suggestiondic[val]
-	return st
+			strn=suggestiondic[val]
+	return strn
 
 #Price
 def convertMaximum(pric, unit):

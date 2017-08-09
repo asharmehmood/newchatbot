@@ -71,152 +71,152 @@ def processsession(req):
     #print(session_Id)
     return session_id
 def recommendationalgo():
-	rating=10
-	buy1={}
-	buy2={}
-	smallbuy={}
+rating=10
+buy1={}
+buy2={}
+smallbuy={}
 
-	avgmid={}
+avgmid={}
+avg=0
+avrg={}
+hcount=0
+actualvector={}
+
+mod1=0
+mod2=0
+modict1={}
+modict2={}
+
+vecmul=0
+reslt=0
+
+simdict={}
+suggestiondic={}
+simusrs={}
+global suggesting_user
+
+hfh="no one"
+housecount=0
+hcountf=0
+
+#s_id='1C11'
+#row_title=['1500 Square Feet C Type Apartment for Sale in i-11','C type apartment for sale in i-11 isb','C, D & E Type apartments for sale in G-11/3','E Type Apartment for Sale','15 Marla Plot for Sale in Islamabad F-10']
+
+cominglist={}
+comingdata={}
+
+for val in row_title:
+	cominglist.update({val:rating})
+	rating=rating-2
+comingdata.update({s_id:cominglist})
+
+buy1={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':10,'666 Square Yard Plot for Sale in Islamabad F-10/2':8},
+'1C2':{'1 Kanal Residential Land for Sale in Peshawar DHA Defence':10,'15 Marla House for Sale in Peshawar Abshar Colony':8},
+'1C3':{'10.6 Marla House for Sale in Quetta Double Road':10,'5 Marla House for Sale in Quetta Chilten Housing Scheme':8},
+'1C4':{'1 Kanal House for Sale in Rawalpindi Bahria Town':10,'10 Marla House for Sale in Rawalpindi Bahria Town Phase-2':8},
+'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':10,'1 Kanal Plot For Sale In DHA Phase-8':8},
+'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':10,'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':8}}
+
+url={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':{'1450-square-feet-apartment-for-sale-in-f-10-islamabad-for-rs-80-lac-99671','uploads\/properties\/2017\/8\/1450-square-feet-apartment-for-sale-in-f-10-islamabad-for-rs-80-lac-99671-image-1.jpg'},'666 Square Yard Plot for Sale in Islamabad F-10/2':{'666-square-yard-plot-for-sale-in-f-102-islamabad-for-rs-75-crore-100682','uploads\/properties\/2017\/8\/666-square-yard-plot-for-sale-in-f-102-islamabad-for-rs-75-crore-100682-1502094279-image-0.jpg'}}
+,'1C2':{'1 Kanal Residential Land for Sale in Peshawar DHA Defence':{'40-kanal-land-available-for-sale-near-hayat-abad-and-al-haram-peshawar-37428','uploads\/properties\/2017\/4\/40-kanaal-land-available-near-hayat-abad-and-al-haram-37428-image-1.jpg'},'15 Marla House for Sale in Peshawar Abshar Colony':{'13-marla-house-is-available-for-sale-askari-5-peshawar-38524','uploads\/properties\/2017\/4\/13-marla-house-is-available-for-sale-askari-5-peshawar-38524-image-1.jpg'}},
+'1C3':{'10.6 Marla House for Sale in Quetta Double Road':{'106-marla-house-for-sale-in-double-road-quetta-for-rs-18-crore-89134','uploads\/properties\/2017\/7\/house-for-sale-at-double-road-quetta-89134-image-1.jpg'},'5 Marla House for Sale in Quetta Chilten Housing Scheme':{'8-marla-house-for-sale-in-arbab-town-quetta-77326','uploads\/properties\/2017\/6\/8-marla-house-for-sale-in-arbab-town-quetta-77326-image-1.jpg'}},
+'1C4':{'1 Kanal House for Sale in Rawalpindi Bahria Town':{'1-kanal-house-for-sale-in-bahria-town-rawalpindi-for-rs-32-crore-101225','uploads\/properties\/2017\/8\/1-kanal-house-for-sale-in-bahria-town-rawalpindi-for-rs-32-crore-101225-image-1.jpg'},'10 Marla House for Sale in Rawalpindi Bahria Town Phase-2':{'10-marla-house-for-sale-in-bahria-town-phase-2-rawalpindi-for-rs-225-crore-101234','uploads\/properties\/2017\/8\/10-marla-house-for-sale-in-bahria-town-phase-2-rawalpindi-for-rs-225-crore-101234-image-1.jpg'}},
+'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':{'1-kanal-bungalow-available-for-sale-in-afohs-new-malir-54978','uploads\/properties\/2017\/5\/1-kanal-available-for-sale-in-afohs-new-malir-54978-image-1.jpg'},'1 Kanal Plot For Sale In DHA Phase-8':{'1-kanal-plot-for-sale-in-dha-phase-8-57932','uploads\/properties\/2017\/5\/1-kanal-plot-for-sale-57932-image-1.jpg'}},
+'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':{'1-kanal-house-for-sale-in-askari-5-lahore-52144','uploads\/properties\/2017\/5\/1-kanal-house-for-sale-in-askari-5-lahore-52144-image-1.jpg'},'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':{'1-kanal-house-for-rent-in-dha-phase-5-block-k-lahore-for-rs-15-lac-101337','uploads\/properties\/2017\/8\/1-kanal-house-for-rent-in-dha-phase-5-block-g-lahore-for-rs-13-lac-101337-image-1.jpg'}}}
+
+buy1.update(comingdata)
+
+print (buy1)
+
+#taking average
+
+for outerkey in buy1:
+	avgmid.update(buy1[outerkey])
+	for key in avgmid:
+		avg=avg+avgmid[key]
+		hcount=hcount+1
+	avrg.update({outerkey:avg/hcount})
 	avg=0
-	avrg={}
+	avgmid.clear()
 	hcount=0
-	actualvector={}
 
-	mod1=0
-	mod2=0
+
+#centered cosine
+
+for outerkey in buy1:
+	buy2.update({outerkey:buy1[outerkey]})
+	for okey in buy2:
+		smallbuy.update(buy2[okey])
+		for key in smallbuy:
+			smallbuy[key]=smallbuy[key]-avrg[outerkey]
+		actualvector.update({outerkey:smallbuy})
+		smallbuy={}
+	buy2.clear()	
+#print (actualvector)
+
+
+#cosine similarity
+
+for outerkey in actualvector:
+	modict1.update(actualvector[outerkey])
+	for value in modict1:
+		mod1=mod1+(modict1[value]*modict1[value])
+	mod1=math.sqrt(mod1)
+	for outerkey2 in actualvector:
+		modict2.update(actualvector[outerkey2])
+		for value in modict2:
+			mod2=mod2+(modict2[value]*modict2[value])
+		mod2=math.sqrt(mod2)
+		for value in modict1:
+			if value in modict2:
+				vecmul=vecmul+(modict1[value]*modict2[value])
+		if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
+			reslt=(vecmul/(mod1*mod2))
+			simusr=outerkey2
+		vecmul=0
+		modict2={}
+	simdict.update({outerkey:simusr})
 	modict1={}
-	modict2={}
-
-	vecmul=0
 	reslt=0
 
-	simdict={}
-	suggestiondic={}
-	simusrs={}
-	global suggesting_user
-	
-	hfh="no one"
-	housecount=0
-	hcountf=0
-	
-	#s_id='1C11'
-	#row_title=['1500 Square Feet C Type Apartment for Sale in i-11','C type apartment for sale in i-11 isb','C, D & E Type apartments for sale in G-11/3','E Type Apartment for Sale','15 Marla Plot for Sale in Islamabad F-10']
-	
-	cominglist={}
-	comingdata={}
-
-	for val in row_title:
-		cominglist.update({val:rating})
-		rating=rating-2
-	comingdata.update({s_id:cominglist})
-
-	buy1={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':10,'666 Square Yard Plot for Sale in Islamabad F-10/2':8},
-	'1C2':{'1 Kanal Residential Land for Sale in Peshawar DHA Defence':10,'15 Marla House for Sale in Peshawar Abshar Colony':8},
-	'1C3':{'10.6 Marla House for Sale in Quetta Double Road':10,'5 Marla House for Sale in Quetta Chilten Housing Scheme':8},
-	'1C4':{'1 Kanal House for Sale in Rawalpindi Bahria Town':10,'10 Marla House for Sale in Rawalpindi Bahria Town Phase-2':8},
-	'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':10,'1 Kanal Plot For Sale In DHA Phase-8':8},
-	'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':10,'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':8}}
-	
-	url={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':{'1450-square-feet-apartment-for-sale-in-f-10-islamabad-for-rs-80-lac-99671','uploads\/properties\/2017\/8\/1450-square-feet-apartment-for-sale-in-f-10-islamabad-for-rs-80-lac-99671-image-1.jpg'},'666 Square Yard Plot for Sale in Islamabad F-10/2':{'666-square-yard-plot-for-sale-in-f-102-islamabad-for-rs-75-crore-100682','uploads\/properties\/2017\/8\/666-square-yard-plot-for-sale-in-f-102-islamabad-for-rs-75-crore-100682-1502094279-image-0.jpg'}}
-	,'1C2':{'1 Kanal Residential Land for Sale in Peshawar DHA Defence':{'40-kanal-land-available-for-sale-near-hayat-abad-and-al-haram-peshawar-37428','uploads\/properties\/2017\/4\/40-kanaal-land-available-near-hayat-abad-and-al-haram-37428-image-1.jpg'},'15 Marla House for Sale in Peshawar Abshar Colony':{'13-marla-house-is-available-for-sale-askari-5-peshawar-38524','uploads\/properties\/2017\/4\/13-marla-house-is-available-for-sale-askari-5-peshawar-38524-image-1.jpg'}},
-	'1C3':{'10.6 Marla House for Sale in Quetta Double Road':{'106-marla-house-for-sale-in-double-road-quetta-for-rs-18-crore-89134','uploads\/properties\/2017\/7\/house-for-sale-at-double-road-quetta-89134-image-1.jpg'},'5 Marla House for Sale in Quetta Chilten Housing Scheme':{'8-marla-house-for-sale-in-arbab-town-quetta-77326','uploads\/properties\/2017\/6\/8-marla-house-for-sale-in-arbab-town-quetta-77326-image-1.jpg'}},
-	'1C4':{'1 Kanal House for Sale in Rawalpindi Bahria Town':{'1-kanal-house-for-sale-in-bahria-town-rawalpindi-for-rs-32-crore-101225','uploads\/properties\/2017\/8\/1-kanal-house-for-sale-in-bahria-town-rawalpindi-for-rs-32-crore-101225-image-1.jpg'},'10 Marla House for Sale in Rawalpindi Bahria Town Phase-2':{'10-marla-house-for-sale-in-bahria-town-phase-2-rawalpindi-for-rs-225-crore-101234','uploads\/properties\/2017\/8\/10-marla-house-for-sale-in-bahria-town-phase-2-rawalpindi-for-rs-225-crore-101234-image-1.jpg'}},
-	'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':{'1-kanal-bungalow-available-for-sale-in-afohs-new-malir-54978','uploads\/properties\/2017\/5\/1-kanal-available-for-sale-in-afohs-new-malir-54978-image-1.jpg'},'1 Kanal Plot For Sale In DHA Phase-8':{'1-kanal-plot-for-sale-in-dha-phase-8-57932','uploads\/properties\/2017\/5\/1-kanal-plot-for-sale-57932-image-1.jpg'}},
-	'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':{'1-kanal-house-for-sale-in-askari-5-lahore-52144','uploads\/properties\/2017\/5\/1-kanal-house-for-sale-in-askari-5-lahore-52144-image-1.jpg'},'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':{'1-kanal-house-for-rent-in-dha-phase-5-block-k-lahore-for-rs-15-lac-101337','uploads\/properties\/2017\/8\/1-kanal-house-for-rent-in-dha-phase-5-block-g-lahore-for-rs-13-lac-101337-image-1.jpg'}}}
-	     
-	buy1.update(comingdata)
-	
-	print (buy1)
-
-	#taking average
-
-	for outerkey in buy1:
-		avgmid.update(buy1[outerkey])
-		for key in avgmid:
-			avg=avg+avgmid[key]
-			hcount=hcount+1
-		avrg.update({outerkey:avg/hcount})
-		avg=0
-		avgmid.clear()
-		hcount=0
+#print (simdict)
 
 
-	#centered cosine
+#suggesting
 
-	for outerkey in buy1:
-		buy2.update({outerkey:buy1[outerkey]})
-		for okey in buy2:
-			smallbuy.update(buy2[okey])
-			for key in smallbuy:
-				smallbuy[key]=smallbuy[key]-avrg[outerkey]
-			actualvector.update({outerkey:smallbuy})
-			smallbuy={}
-		buy2.clear()	
-	#print (actualvector)
+for key in simdict:
+	for key2 in buy1[simdict[key]]:
+		if key2 not in buy1[key]:
+			#print("Suggestion for", key,":", key2)
+			if key not in suggestiondic:
+				suggestiondic[key]=key2		
 
 
-	#cosine similarity
+#users who have no similar users
 
-	for outerkey in actualvector:
-		modict1.update(actualvector[outerkey])
-		for value in modict1:
-			mod1=mod1+(modict1[value]*modict1[value])
-		mod1=math.sqrt(mod1)
-		for outerkey2 in actualvector:
-			modict2.update(actualvector[outerkey2])
-			for value in modict2:
-				mod2=mod2+(modict2[value]*modict2[value])
-			mod2=math.sqrt(mod2)
-			for value in modict1:
-				if value in modict2:
-					vecmul=vecmul+(modict1[value]*modict2[value])
-			if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
-				reslt=(vecmul/(mod1*mod2))
-				simusr=outerkey2
-			vecmul=0
-			modict2={}
-		simdict.update({outerkey:simusr})
-		modict1={}
-		reslt=0
+for user in buy1:
+	for house in buy1[user]:
+		for user2 in buy1:
+			if house in  buy1[user2]:
+				housecount=housecount+1
+		if(housecount>hcountf):
+			hcountf=housecount
+			hfh=house
+		housecount=0
 
-	#print (simdict)
+for user in simdict:
+	if user not in suggestiondic:
+		suggestiondic[user]=hfh
+		#print("Suggestion for", user,":", hfh)
 
+#print (suggestiondic)
 
-	#suggesting
+for val in suggestiondic:
+	if val==s_id:
+		str=suggestiondic[val]
 
-	for key in simdict:
-		for key2 in buy1[simdict[key]]:
-			if key2 not in buy1[key]:
-				#print("Suggestion for", key,":", key2)
-				if key not in suggestiondic:
-					suggestiondic[key]=key2		
-	
-
-	#users who have no similar users
-	
-	for user in buy1:
-		for house in buy1[user]:
-			for user2 in buy1:
-				if house in  buy1[user2]:
-					housecount=housecount+1
-			if(housecount>hcountf):
-				hcountf=housecount
-				hfh=house
-			housecount=0
-					
-	for user in simdict:
-		if user not in suggestiondic:
-			suggestiondic[user]=hfh
-			#print("Suggestion for", user,":", hfh)
-
-	#print (suggestiondic)
-	
-	for val in suggestiondic:
-		if val==s_id:
-			str=suggestiondic[val]
-
-	suggesting_user=simdict[s_id]
-	return str
+suggesting_user=simdict[s_id]
+return str
 def processlocation(req):
     global city
     result = req.get("result")

@@ -164,7 +164,7 @@ def recommendationalgo():
 	
 	#s_id='1C11'
 	#row_title=['5 Marla House for Sale in Islamabad E-11/4','571 Square Feet Apartment for Sale in Islamabad Gulberg Greens','2 Kanal Residential Land for Sale in Islamabad Bahria Enclave','88 Marla House for Sale in Islamabad Sector G-6','10 Marla House for Sale in Islamabad E-11/2']
-	#stg='nothing'
+	global stg
 	cominglist={}
 	comingdata={}
 

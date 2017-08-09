@@ -124,7 +124,7 @@ def recommendationalgo():
 	,'1C14':{'2 Marla Plot for Sale in Islamabad H-13':6,'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':10,'4 Marla House for Sale in Islamabad G-13':8,'5 Marla House for Sale in Islamabad G-13':2,'7 Marla House for Sale in Islamabad G-13':4},
 	'1C15':{'1,046 Square Feet Apartment for Sale in Islamabad H-13':10,'2 Marla Plot for Sale in Islamabad H-13':4,'1450 Square Feet Apartment for Sale in Islamabad F-10':6,'14 Marla Plot for Sale in Islamabad H-13':8,'6 Marla Plot for Sale in Islamabad H-13':2},
 	'1C16':{'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':4,'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':6,'15 Marla Plot for Sale in Islamabad F-10':10,'10 Marla House for Sale in Islamabad E-11/2':8,'12 Marla House for Sale in Islamabad E-11/2':2},
-	'1C17':{'1500 Square Feet C Type Apartment for Sale in i-11':10,'C type apartment for sale in i-11 isb':8,'1 Kanal Plot For Sale In MPCHS - Block A, Islamabad':6,'house 6':4}}
+	'1C17':{'1500 Square Feet C Type Apartment for Sale in i-11':10,'C type apartment for sale in i-11 isb':8,'1 Kanal Plot For Sale In MPCHS - Block A, Islamabad':6,'house 6':4,'house 7':2}}
 
 	buy1.update(comingdata)
 	

@@ -292,6 +292,7 @@ def convertMaximum(pric, unit):
 
 def makeWebhookResult(data):
      i=0
+     global row_title
      length=len(data)
      speech_data = "Here are some properties with your choice. We have total of "+str(length)+" records of your interest in city  "+city+"."
      text_data = "Here are some properties with your choice. We have total of "+str(length)+" records of your interest in city  "+city+"."

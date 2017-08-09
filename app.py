@@ -93,7 +93,8 @@ def recommendationalgo():
 	simdict={}
 	suggestiondic={}
 	simusrs={}
-
+	global suggesting_user
+	
 	hfh="no one"
 	housecount=0
 	hcountf=0
@@ -214,7 +215,6 @@ def recommendationalgo():
 		if val==s_id:
 			str=suggestiondic[val]
 
-	global suggesting_user
 	suggesting_user=simdict[s_id]
 	return str
 def processlocation(req):

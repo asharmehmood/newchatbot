@@ -32,6 +32,7 @@ def processRequest(req):
     global city_names
     global QR
     global intent_name
+    global s_id
     intent_name=processIntentName(req)
     city_names=processlocation(req)
     property_type=processPropertyType(req)
@@ -39,7 +40,7 @@ def processRequest(req):
     price_unit=processPriceUnit(req)
     max_area=processAreaMax(req)
     unit_property=processUnits(req)
-
+    s_id=processsession(req)
     maximum_value=convertMaximum(maximum_valu, price_unit)
     print(maximum_value)
 
@@ -65,6 +66,10 @@ def processIntentName(req):
     parameters = result.get("metadata")
     intent = parameters.get("intentName")
     return intent
+def processsession(req):
+    session_id = req.get("sessionId")
+    #print(session_Id)
+    return session_id
 
 def processlocation(req):
     global city
@@ -165,9 +170,9 @@ def makeWebhookResult(data):
         row_number[i]=data[i]['number']
         row_image[i]=data[i]['image']
         row_city[i]=data[i]['city_name']
-        speech_data_parts="Here is record " + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
+        speech_data_parts="Here is record " + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i]) + "."
         speech_data = speech_data + speech_data_parts
-        text_data_parts ="Here is record " + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
+        text_data_parts ="Here is record " + s_id + str(i+1) +":"+ row_title[i]+" in city "+row_city[i] + " price is "+ str(row_price[i])+ ". For Info about this contact at number "+str(row_number[i]) + "."
         text_data = text_data + text_data_parts	
         i+=1
      print(row_title[0])

@@ -70,7 +70,151 @@ def processsession(req):
     session_id = req.get("sessionId")
     #print(session_Id)
     return session_id
+def recommendationalgo():
+	rating=10
+	buy1={}
+	buy2={}
+	smallbuy={}
 
+	avgmid={}
+	avg=0
+	avrg={}
+	hcount=0
+	actualvector={}
+
+	mod1=0
+	mod2=0
+	modict1={}
+	modict2={}
+
+	vecmul=0
+	reslt=0
+
+	simdict={}
+	suggestiondic={}
+	simusrs={}
+
+	hfh="no one"
+	housecount=0
+	hcountf=0
+	
+	#s_id='1C11'
+	#row_title=['1500 Square Feet C Type Apartment for Sale in i-11','C type apartment for sale in i-11 isb','C, D & E Type apartments for sale in G-11/3','E Type Apartment for Sale','15 Marla Plot for Sale in Islamabad F-10']
+	
+	cominglist={}
+	comingdata={}
+
+	for val in row_title:
+		cominglist.update({val:rating})
+		rating=rating-2
+	comingdata.update({s_id:cominglist})
+
+	buy1={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':10,'666 Square Yard Plot for Sale in Islamabad F-10/2':8,'1 Kanal Plot for Sale in Islamabad F-10/2':6,'2300 Square Feet Apartment for Sale in Islamabad F-10':4,'15 Marla Plot for Sale in Islamabad F-10':2},
+	'1C2':{'24 Marla House for Sale in Islamabad G-6':10,'24 Marla House for Sale in Islamabad G-6/4':8,'24 Marla House for Sale in Islamabad G-6':6,'88 Marla House for Sale in Islamabad Sector G-6':4,'16 Marla House for Sale in Islamabad Sector G-6/4':2}
+	,'1C3':{'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':10,'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':8,'4 Marla House for Sale in Islamabad G-13':6,'5 Marla House for Sale in Islamabad G-13':4,'7 Marla House for Sale in Islamabad G-13':2},
+	'1C4':{'1,046 Square Feet Apartment for Sale in Islamabad H-13':10,'2 Marla Plot for Sale in Islamabad H-13':8,'3 Marla Plot for Sale in Islamabad H-13':6,'14 Marla Plot for Sale in Islamabad H-13':4,'6 Marla Plot for Sale in Islamabad H-13':2},
+	'1C5':{'5 Marla House for Sale in Islamabad E-11/4':10,'1400 Square Feet Apartment for Sale in Islamabad E-11':8,'500 Square Yard House for Sale in Islamabad E-11/3':6,'10 Marla House for Sale in Islamabad E-11/2':4,'12 Marla House for Sale in Islamabad E-11/2':2},
+	'1C6':{'1450 Square Feet Apartment for Sale in Islamabad F-10':8,'666 Square Yard Plot for Sale in Islamabad F-10/2':2,'1 Kanal Plot for Sale in Islamabad F-10/2':6,'2300 Square Feet Apartment for Sale in Islamabad F-10':10,'15 Marla Plot for Sale in Islamabad F-10':4},
+	'1C7':{'24 Marla House for Sale in Islamabad G-6':10,'24 Marla House for Sale in Islamabad G-6/4':2,'24 Marla House for Sale in Islamabad G-6':6,'88 Marla House for Sale in Islamabad Sector G-6':8,'16 Marla House for Sale in Islamabad Sector G-6/4':4}
+	,'1C8':{'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':6,'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':10,'4 Marla House for Sale in Islamabad G-13':8,'5 Marla House for Sale in Islamabad G-13':2,'7 Marla House for Sale in Islamabad G-13':4},
+	'1C9':{'1,046 Square Feet Apartment for Sale in Islamabad H-13':10,'2 Marla Plot for Sale in Islamabad H-13':4,'3 Marla Plot for Sale in Islamabad H-13':6,'14 Marla Plot for Sale in Islamabad H-13':8,'6 Marla Plot for Sale in Islamabad H-13':2},
+	'1C10':{'5 Marla House for Sale in Islamabad E-11/4':6,'1400 Square Feet Apartment for Sale in Islamabad E-11':4,'500 Square Yard House for Sale in Islamabad E-11/3':10,'10 Marla House for Sale in Islamabad E-11/2':8,'12 Marla House for Sale in Islamabad E-11/2':2},
+	'1C12':{'24 Marla House for Sale in Islamabad G-6':8,'666 Square Yard Plot for Sale in Islamabad F-10/2':2,'1450 Square Feet Apartment for Sale in Islamabad F-10':8,'2300 Square Feet Apartment for Sale in Islamabad F-10':10,'15 Marla Plot for Sale in Islamabad F-10':4},
+	'1C13':{'24 Marla House for Sale in Islamabad G-6':10,'24 Marla House for Sale in Islamabad G-6':2,'24 Marla House for Sale in Islamabad G-6':6,'88 Marla House for Sale in Islamabad Sector G-6':8,'16 Marla House for Sale in Islamabad Sector G-6/4':4}
+	,'1C14':{'2 Marla Plot for Sale in Islamabad H-13':6,'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':10,'4 Marla House for Sale in Islamabad G-13':8,'5 Marla House for Sale in Islamabad G-13':2,'7 Marla House for Sale in Islamabad G-13':4},
+	'1C15':{'1,046 Square Feet Apartment for Sale in Islamabad H-13':10,'2 Marla Plot for Sale in Islamabad H-13':4,'1450 Square Feet Apartment for Sale in Islamabad F-10':6,'14 Marla Plot for Sale in Islamabad H-13':8,'6 Marla Plot for Sale in Islamabad H-13':2},
+	'1C16':{'2 Kanal Residential Land for Sale in Islamabad Bahria Enclave':4,'571 Square Feet Apartment for Sale in Islamabad Gulberg Greens':6,'15 Marla Plot for Sale in Islamabad F-10':10,'10 Marla House for Sale in Islamabad E-11/2':8,'12 Marla House for Sale in Islamabad E-11/2':2}}
+
+	buy1.update(comingdata)
+
+
+	#taking average
+
+	for outerkey in buy1:
+		avgmid.update(buy1[outerkey])
+		for key in avgmid:
+			avg=avg+avgmid[key]
+			hcount=hcount+1
+		avrg.update({outerkey:avg/hcount})
+		avg=0
+		avgmid.clear()
+		hcount=0
+
+
+	#centered cosine
+
+	for outerkey in buy1:
+		buy2.update({outerkey:buy1[outerkey]})
+		for okey in buy2:
+			smallbuy.update(buy2[okey])
+			for key in smallbuy:
+				smallbuy[key]=smallbuy[key]-avrg[outerkey]
+			actualvector.update({outerkey:smallbuy})
+			smallbuy={}
+		buy2.clear()	
+	#print (actualvector)
+
+
+	#cosine similarity
+
+	for outerkey in actualvector:
+		modict1.update(actualvector[outerkey])
+		for value in modict1:
+			mod1=mod1+(modict1[value]*modict1[value])
+		mod1=math.sqrt(mod1)
+		for outerkey2 in actualvector:
+			modict2.update(actualvector[outerkey2])
+			for value in modict2:
+				mod2=mod2+(modict2[value]*modict2[value])
+			mod2=math.sqrt(mod2)
+			for value in modict1:
+				if value in modict2:
+					vecmul=vecmul+(modict1[value]*modict2[value])
+			if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
+				reslt=(vecmul/(mod1*mod2))
+				simusr=outerkey2
+			vecmul=0
+			modict2={}
+		simdict.update({outerkey:simusr})
+		modict1={}
+		reslt=0
+
+	#print (simdict)
+
+
+	#suggesting
+
+	for key in simdict:
+		for key2 in buy1[simdict[key]]:
+			if key2 not in buy1[key]:
+				#print("Suggestion for", key,":", key2)
+				if key not in suggestiondic:
+					suggestiondic[key]=key2		
+	
+
+	#users who have no similar users
+	
+	for user in buy1:
+		for house in buy1[user]:
+			for user2 in buy1:
+				if house in  buy1[user2]:
+					housecount=housecount+1
+			if(housecount>hcountf):
+				hcountf=housecount
+				hfh=house
+			housecount=0
+					
+	for user in simdict:
+		if user not in suggestiondic:
+			suggestiondic[user]=hfh
+			#print("Suggestion for", user,":", hfh)
+
+	#print (suggestiondic)
+	
+	for val in suggestiondic:
+		if val==s_id:
+			str=suggestiondic[val]
+	return str
 def processlocation(req):
     global city
     result = req.get("result")
@@ -176,6 +320,7 @@ def makeWebhookResult(data):
         text_data = text_data + text_data_parts	
         i+=1
      print(row_title[0])
+     text_data = "suggestion: " + recommendationalgo()
      variable1=str(row_number[0])
      variable2=str(row_number[1])
      variable3=str(row_number[2])

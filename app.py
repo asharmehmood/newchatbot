@@ -211,7 +211,7 @@ def recommendationalgo():
 			suggestiondic[user]=hfh
 			#print("Suggestion for", user,":", hfh)
 
-	#print (suggestiondic)
+	print (suggestiondic)
 	
 	for val in suggestiondic:
 		if val==s_id:

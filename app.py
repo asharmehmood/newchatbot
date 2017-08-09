@@ -127,7 +127,8 @@ def recommendationalgo():
 	'1C17':{'1500 Square Feet C Type Apartment for Sale in i-11':10,'C type apartment for sale in i-11 isb':8,'1 Kanal Plot For Sale In MPCHS - Block A, Islamabad':6,'house 6':4}}
 
 	buy1.update(comingdata)
-
+	
+	print (buy1)
 
 	#taking average
 

@@ -339,11 +339,9 @@ def makeWebhookResult(data):
 		text_data = text_data + text_data_parts	
 		i+=1
 	print(row_title[0])
-	print (r_slug)
-	print (im_url)
 	(algostr,r_slug,im_url)=recommendationalgo()
 	algos = "suggestion: " + algostr
-	text_data = text_data + algos
+	text_data = text_data + algos + r_slug + im_url
 	variable1=str(row_number[0])
 	variable2=str(row_number[1])
 	variable3=str(row_number[2])

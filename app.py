@@ -33,9 +33,9 @@ def processRequest(req):
 	global QR
 	global intent_name
 	global s_id
-	global str=''
-	global r_slug=''
-	global im_url=''
+	global str
+	global r_slug
+	global im_url
 	intent_name=processIntentName(req)
 	city_names=processlocation(req)
 	property_type=processPropertyType(req)

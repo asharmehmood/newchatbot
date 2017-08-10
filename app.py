@@ -43,8 +43,7 @@ def processRequest(req):
 	price_unit=processPriceUnit(req)
 	max_area=processAreaMax(req)
 	unit_property=processUnits(req)
-	print ("as;dhlfjsdfjs;kfj;sdjfsdlkfjs;lkfs;lfskdfj;alsjlas;jfdjs;lkfsal",processsession(req))
-	str,r_slug,im_url=processsession(req)
+	s_id=processsession(req)
 	maximum_value=convertMaximum(maximum_valu, price_unit)
 	print(maximum_value)
 
@@ -342,7 +341,8 @@ def makeWebhookResult(data):
 	print(row_title[0])
 	print (r_slug)
 	print (im_url)
-	algos = "suggestion: " + recommendationalgo()
+	(algostr,r_slug,im_url)=recommendationalgo()
+	algos = "suggestion: " + algostr
 	text_data = text_data + algos
 	variable1=str(row_number[0])
 	variable2=str(row_number[1])

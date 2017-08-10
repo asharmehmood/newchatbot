@@ -128,7 +128,7 @@ def recommendationalgo():
 	'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':{'1-kanal-bungalow-available-for-sale-in-afohs-new-malir-54978','uploads\/properties\/2017\/5\/1-kanal-available-for-sale-in-afohs-new-malir-54978-image-1.jpg'},'1 Kanal Plot For Sale In DHA Phase-8':{'1-kanal-plot-for-sale-in-dha-phase-8-57932','uploads\/properties\/2017\/5\/1-kanal-plot-for-sale-57932-image-1.jpg'}},
 	'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':{'1-kanal-house-for-sale-in-askari-5-lahore-52144','uploads\/properties\/2017\/5\/1-kanal-house-for-sale-in-askari-5-lahore-52144-image-1.jpg'},'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':{'1-kanal-house-for-rent-in-dha-phase-5-block-k-lahore-for-rs-15-lac-101337','uploads\/properties\/2017\/8\/1-kanal-house-for-rent-in-dha-phase-5-block-g-lahore-for-rs-13-lac-101337-image-1.jpg'}}}
 	
-	city_buy1_mapping={'Islamabad':'1C1','Peshawar':'1C2','Quetta':'1C3','Rawalpindi':'1C4','Karachi':'1C5','Lahore':'1C6'}
+	city_buy1_mapping={'Islamabad':'1C1','Peshawar':'1C2','Quetta':'1C3','Rawalpindi':'1C4','Karachi':'1C5','Lahore':'1C6','M.b.din':'9268638b-c2cd-411a-97ab-59dee7a7e1d1'}
 	buy1.update(comingdata)
 
 	print (buy1)

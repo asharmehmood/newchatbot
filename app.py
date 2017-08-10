@@ -28,7 +28,7 @@ def webhook():
 
 def processRequest(req):
 	if req.get("result").get("action") != "final_budget":
-	return {}
+		return {}
 	global city_names
 	global QR
 	global intent_name

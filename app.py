@@ -11,9 +11,9 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
-global suggesting_user
-global r_slug
-global im_url
+#global suggesting_user
+#global r_slug
+#global im_url
 # Flask app should start in global layout
 app = Flask(__name__)
 intent_name="string"

@@ -101,7 +101,8 @@ def recommendationalgo():
 	hfh="no one"
 	housecount=0
 	hcountf=0
-
+	housekey=''
+	cityy=''
 	#s_id='1C11'
 	#row_title=['1500 Square Feet C Type Apartment for Sale in i-11','C type apartment for sale in i-11 isb','C, D & E Type apartments for sale in G-11/3','E Type Apartment for Sale','15 Marla Plot for Sale in Islamabad F-10']
 
@@ -207,7 +208,6 @@ def recommendationalgo():
 				for value in buy1[key]:
 					if house in value:
 						housekey=key
-
 			for key, value in city_buy1_mapping.items():
 				if housekey == value:
 					cityy=key

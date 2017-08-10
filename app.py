@@ -297,13 +297,13 @@ def convertMaximum(pric, unit):
 	price = int(pric)
 	print(price)
 	if unit[0] == 'z':
-	price = int(pric)
+		price = int(pric)
 	elif unit[0] == 'l' or unit[0] == 'L':
-	price = price * (10 ** 5)
+		price = price * (10 ** 5)
 	elif unit[0] == 'm' or unit[0] == 'M':
-	price = price * (10 ** 6)
+		price = price * (10 ** 6)
 	elif unit[0] == 'c' or unit[0] == 'C':
-	price = price * (10 ** 7)
+		price = price * (10 ** 7)
 	print(price)
 	return str(price)
 

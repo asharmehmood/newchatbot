@@ -11,6 +11,7 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+global suggesting_user
 # Flask app should start in global layout
 app = Flask(__name__)
 intent_name="string"
@@ -93,7 +94,7 @@ def recommendationalgo():
 	simdict={}
 	suggestiondic={}
 	simusrs={}
-	global suggesting_user
+	
 
 	hfh="no one"
 	housecount=0

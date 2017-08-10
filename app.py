@@ -40,7 +40,7 @@ def processRequest(req):
 	price_unit=processPriceUnit(req)
 	max_area=processAreaMax(req)
 	unit_property=processUnits(req)
-	s_id=processsession(req)
+	(s_id,r_slug,im_url)=processsession(req)
 	maximum_value=convertMaximum(maximum_valu, price_unit)
 	print(maximum_value)
 
@@ -221,8 +221,6 @@ def recommendationalgo():
 	global im_url
 	suggesting_user=simdict[s_id]
 	flag_i=0	     
-	row_slug=''
-	image_url=''
 	for value in url[suggesting_user][str]:
 		if flag_i==0:
 			r_slug=value
@@ -230,7 +228,7 @@ def recommendationalgo():
 		else:
 			im_url=value
 			flag_i=0
-	return str
+	return (str,r_slug,im_url)
 def processlocation(req):
 	global city
 	result = req.get("result")

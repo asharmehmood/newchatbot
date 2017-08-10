@@ -228,7 +228,8 @@ def recommendationalgo():
 		else:
 			im_url=value
 			flag_i=0
-	return (str,r_slug,im_url)
+	sts='ashar'
+	return (sts,r_slug,im_url)
 def processlocation(req):
 	global city
 	result = req.get("result")

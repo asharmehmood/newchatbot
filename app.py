@@ -212,7 +212,7 @@ def recommendationalgo():
 				if housekey == value:
 					cityy=key
 			if(housecount>hcountf and cityy==city_names):
-				print (hfh)
+				print ("andr agya house me :", hfh)
 				hcountf=housecount
 				hfh=house
 			housecount=0

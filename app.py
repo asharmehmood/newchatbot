@@ -228,10 +228,10 @@ def recommendationalgo():
 	for value in url[suggesting_user][str]:
 		if flag_i==0:
 			r_slug=value
-			i=i+1
+			flag_i=flag_i+1
 		else:
 			im_url=value
-			i=0
+			flag_i=0
 	return str
 def processlocation(req):
 	global city

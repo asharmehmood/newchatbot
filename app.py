@@ -203,12 +203,14 @@ def recommendationalgo():
 			for user2 in buy1:
 				if house in  buy1[user2]:
 					housecount=housecount+1
-			for key, value in buy1.items():
-    				if house == value:
-        				housekey=key
+			for key in buy1:
+				for value in buy1[key]:
+					if house in value:
+						housekey=key
+
 			for key, value in city_buy1_mapping.items():
-    				if housekey == value:
-        				cityy=key
+				if housekey == value:
+					cityy=key
 			if(housecount>hcountf and cityy==city_names):
 				hcountf=housecount
 				hfh=house

@@ -43,7 +43,7 @@ def processRequest(req):
 	price_unit=processPriceUnit(req)
 	max_area=processAreaMax(req)
 	unit_property=processUnits(req)
-	print (processsession(req))
+	print ("as;dhlfjsdfjs;kfj;sdjfsdlkfjs;lkfs;lfskdfj;alsjlas;jfdjs;lkfsal",processsession(req))
 	str,r_slug,im_url=processsession(req)
 	maximum_value=convertMaximum(maximum_valu, price_unit)
 	print(maximum_value)

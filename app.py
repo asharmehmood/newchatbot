@@ -11,9 +11,6 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
-#global suggesting_user
-#global r_slug
-#global im_url
 # Flask app should start in global layout
 app = Flask(__name__)
 intent_name="string"
@@ -219,7 +216,9 @@ def recommendationalgo():
 			str=suggestiondic[val]
 
 #storing row_slug and image url
-
+	global suggesting_user
+	global r_slug
+	global im_url
 	suggesting_user=simdict[s_id]
 	flag_i=0	     
 	row_slug=''

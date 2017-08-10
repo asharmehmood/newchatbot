@@ -134,53 +134,53 @@ def recommendationalgo():
 	#taking average
 
 	for outerkey in buy1:
-	avgmid.update(buy1[outerkey])
-	for key in avgmid:
-		avg=avg+avgmid[key]
-		hcount=hcount+1
-	avrg.update({outerkey:avg/hcount})
-	avg=0
-	avgmid.clear()
-	hcount=0
+		avgmid.update(buy1[outerkey])
+		for key in avgmid:
+			avg=avg+avgmid[key]
+			hcount=hcount+1
+		avrg.update({outerkey:avg/hcount})
+		avg=0
+		avgmid.clear()
+		hcount=0
 
 
 #centered cosine
 
 	for outerkey in buy1:
-	buy2.update({outerkey:buy1[outerkey]})
-	for okey in buy2:
-		smallbuy.update(buy2[okey])
-		for key in smallbuy:
-			smallbuy[key]=smallbuy[key]-avrg[outerkey]
-		actualvector.update({outerkey:smallbuy})
-		smallbuy={}
-	buy2.clear()	
+		buy2.update({outerkey:buy1[outerkey]})
+		for okey in buy2:
+			smallbuy.update(buy2[okey])
+			for key in smallbuy:
+				smallbuy[key]=smallbuy[key]-avrg[outerkey]
+			actualvector.update({outerkey:smallbuy})
+			smallbuy={}
+		buy2.clear()	
 	#print (actualvector)
 
 
 #cosine similarity
 
 	for outerkey in actualvector:
-	modict1.update(actualvector[outerkey])
-	for value in modict1:
-		mod1=mod1+(modict1[value]*modict1[value])
-	mod1=math.sqrt(mod1)
-	for outerkey2 in actualvector:
-		modict2.update(actualvector[outerkey2])
-		for value in modict2:
-			mod2=mod2+(modict2[value]*modict2[value])
-		mod2=math.sqrt(mod2)
+		modict1.update(actualvector[outerkey])
 		for value in modict1:
-			if value in modict2:
-				vecmul=vecmul+(modict1[value]*modict2[value])
-		if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
-			reslt=(vecmul/(mod1*mod2))
-			simusr=outerkey2
-		vecmul=0
-		modict2={}
-	simdict.update({outerkey:simusr})
-	modict1={}
-	reslt=0
+			mod1=mod1+(modict1[value]*modict1[value])
+		mod1=math.sqrt(mod1)
+		for outerkey2 in actualvector:
+			modict2.update(actualvector[outerkey2])
+			for value in modict2:
+				mod2=mod2+(modict2[value]*modict2[value])
+			mod2=math.sqrt(mod2)
+			for value in modict1:
+				if value in modict2:
+					vecmul=vecmul+(modict1[value]*modict2[value])
+			if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
+				reslt=(vecmul/(mod1*mod2))
+				simusr=outerkey2
+			vecmul=0
+			modict2={}
+		simdict.update({outerkey:simusr})
+		modict1={}
+		reslt=0
 
 #print (simdict)
 
@@ -188,35 +188,35 @@ def recommendationalgo():
 #suggesting
 
 	for key in simdict:
-	for key2 in buy1[simdict[key]]:
-		if key2 not in buy1[key]:
+		for key2 in buy1[simdict[key]]:
+			if key2 not in buy1[key]:
 			#print("Suggestion for", key,":", key2)
-			if key not in suggestiondic:
-				suggestiondic[key]=key2		
+				if key not in suggestiondic:
+					suggestiondic[key]=key2		
 
 
 #users who have no similar users
 
 	for user in buy1:
-	for house in buy1[user]:
-		for user2 in buy1:
-			if house in  buy1[user2]:
-				housecount=housecount+1
-		if(housecount>hcountf):
-			hcountf=housecount
-			hfh=house
-		housecount=0
+		for house in buy1[user]:
+			for user2 in buy1:
+				if house in  buy1[user2]:
+					housecount=housecount+1
+			if(housecount>hcountf):
+				hcountf=housecount
+				hfh=house
+			housecount=0
 
 	for user in simdict:
-	if user not in suggestiondic:
-		suggestiondic[user]=hfh
+		if user not in suggestiondic:
+			suggestiondic[user]=hfh
 		#print("Suggestion for", user,":", hfh)
 
 #print (suggestiondic)
 
 	for val in suggestiondic:
-	if val==s_id:
-		str=suggestiondic[val]
+		if val==s_id:
+			str=suggestiondic[val]
 
 #storing row_slug and image url
 
@@ -249,9 +249,9 @@ def processMaximum(req):
 	parameters = result.get("parameters")
 	act_pri = parameters.get("actual_price")
 	if act_pri == '0':
-	return act_pri
+		return act_pri
 	else:
-	maximum = act_pri.get("number")
+		maximum = act_pri.get("number")
 	return maximum
 
 def processPriceUnit(req):

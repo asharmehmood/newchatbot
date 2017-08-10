@@ -184,7 +184,7 @@ def recommendationalgo():
 		modict1={}
 		reslt=0
 
-#print (simdict)
+	print ("this is simdict:",simdict)
 
 
 #suggesting

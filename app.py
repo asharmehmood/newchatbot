@@ -222,7 +222,6 @@ def recommendationalgo():
 #storing row_slug and image url
 
 	suggesting_user=simdict[s_id]
-	print ("suggesting userrrrrrrrrrr:",suggesting_user)
 	flag_i=0	     
 	row_slug=''
 	image_url=''
@@ -340,6 +339,8 @@ def makeWebhookResult(data):
 		text_data = text_data + text_data_parts	
 		i+=1
 	print(row_title[0])
+	print (r_slug)
+	print (im_url)
 	algos = "suggestion: " + recommendationalgo()
 	text_data = text_data + algos
 	variable1=str(row_number[0])

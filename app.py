@@ -109,8 +109,8 @@ def recommendationalgo():
 	global im_url
 
 	for val in row_title:
-	cominglist.update({val:rating})
-	rating=rating-2
+		cominglist.update({val:rating})
+		rating=rating-2
 	comingdata.update({s_id:cominglist})
 
 	buy1={'1C1':{'1450 Square Feet Apartment for Sale in Islamabad F-10':10,'666 Square Yard Plot for Sale in Islamabad F-10/2':8},

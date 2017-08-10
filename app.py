@@ -104,6 +104,9 @@ def recommendationalgo():
 
 	cominglist={}
 	comingdata={}
+	
+	global r_slug
+	global im_url
 
 	for val in row_title:
 	cominglist.update({val:rating})
@@ -215,7 +218,19 @@ def recommendationalgo():
 	if val==s_id:
 		str=suggestiondic[val]
 
+#storing row_slug and image url
+
 	suggesting_user=simdict[s_id]
+	flag_i=0	     
+	row_slug=''
+	image_url=''
+	for value in url[suggesting_user][str]:
+		if flag_i==0:
+			r_slug=value
+			i=i+1
+		else:
+			im_url=value
+			i=0
 	return str
 def processlocation(req):
 	global city

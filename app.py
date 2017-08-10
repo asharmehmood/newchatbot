@@ -222,6 +222,7 @@ def recommendationalgo():
 #storing row_slug and image url
 
 	suggesting_user=simdict[s_id]
+	print ("suggesting userrrrrrrrrrr:",suggesting_user)
 	flag_i=0	     
 	row_slug=''
 	image_url=''

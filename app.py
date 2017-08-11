@@ -74,16 +74,26 @@ def processsession(req):
 	#print(session_Id)
 	return session_id
 def recommendationalgo():
+	#city_names='Quetta'
 	rating=10
+
 	buy1={}
+
 	buy2={}
+
 	smallbuy={}
 
+
 	avgmid={}
+
 	avg=0
+
 	avrg={}
+
 	hcount=0
+
 	actualvector={}
+
 
 	mod1=0
 	mod2=0
@@ -96,15 +106,15 @@ def recommendationalgo():
 	simdict={}
 	suggestiondic={}
 	simusrs={}
-	
+	simusr=''
 
 	hfh="no one"
 	housecount=0
 	hcountf=0
 	housekey=''
 	cityy=''
-	#s_id='1C11'
-	#row_title=['1500 Square Feet C Type Apartment for Sale in i-11','C type apartment for sale in i-11 isb','C, D & E Type apartments for sale in G-11/3','E Type Apartment for Sale','15 Marla Plot for Sale in Islamabad F-10']
+	#s_id='1C7'
+	#row_title=['1500 Square Feet C Type Apartment for Sale in i-11 Quetta','C type apartment for sale in i-11 Quetta']
 
 	cominglist={}
 	comingdata={}
@@ -128,10 +138,8 @@ def recommendationalgo():
 	'1C5':{'1 Kanal Bungalow Available For Sale in AFOHS New Malir':{'1-kanal-bungalow-available-for-sale-in-afohs-new-malir-54978','uploads\/properties\/2017\/5\/1-kanal-available-for-sale-in-afohs-new-malir-54978-image-1.jpg'},'1 Kanal Plot For Sale In DHA Phase-8':{'1-kanal-plot-for-sale-in-dha-phase-8-57932','uploads\/properties\/2017\/5\/1-kanal-plot-for-sale-57932-image-1.jpg'}},
 	'1C6':{'1 Kanal House For Sale In Askari-5, Lahore':{'1-kanal-house-for-sale-in-askari-5-lahore-52144','uploads\/properties\/2017\/5\/1-kanal-house-for-sale-in-askari-5-lahore-52144-image-1.jpg'},'1 Kanal House for Rent in Lahore DHA Phase-5 Block K':{'1-kanal-house-for-rent-in-dha-phase-5-block-k-lahore-for-rs-15-lac-101337','uploads\/properties\/2017\/8\/1-kanal-house-for-rent-in-dha-phase-5-block-g-lahore-for-rs-13-lac-101337-image-1.jpg'}}}
 	
-	city_buy1_mapping={'Islamabad':'1C1','Peshawar':'1C2','Quetta':'1C3','Rawalpindi':'1C4','Karachi':'1C5','Lahore':'1C6','M.b.din':'9268638b-c2cd-411a-97ab-59dee7a7e1d1'}
+	city_buy1_mapping={'Islamabad':'1C1','Peshawar':'1C2','Quetta':'1C3','Rawalpindi':'1C4','Karachi':'1C5','Lahore':'1C6'}
 	buy1.update(comingdata)
-
-	print (buy1)
 
 	#taking average
 
@@ -164,27 +172,39 @@ def recommendationalgo():
 
 	for outerkey in actualvector:
 		modict1.update(actualvector[outerkey])
+		#print ("modict1:",modict1)
 		for value in modict1:
 			mod1=mod1+(modict1[value]*modict1[value])
 		mod1=math.sqrt(mod1)
+		#print ("mod1:",mod1)
 		for outerkey2 in actualvector:
 			modict2.update(actualvector[outerkey2])
+			#print ("modict2",modict2)
 			for value in modict2:
 				mod2=mod2+(modict2[value]*modict2[value])
 			mod2=math.sqrt(mod2)
+			#print ("mod2:",mod2)
 			for value in modict1:
+				#print ("value of modict1 to be checked:",value)
 				if value in modict2:
 					vecmul=vecmul+(modict1[value]*modict2[value])
-			if(vecmul/(mod1*mod2)>=reslt and outerkey2!=outerkey and modict1!=modict2):
+					#print ("vector multiplication:", vecmul)
+			if(vecmul/(mod1*mod2)>reslt and outerkey2!=outerkey and modict1!=modict2):
+				#print ("purana result:",reslt)
 				reslt=(vecmul/(mod1*mod2))
+				#print ("current result:",reslt)
 				simusr=outerkey2
 			vecmul=0
 			modict2={}
-		simdict.update({outerkey:simusr})
+			mod2=0
+		if(reslt!=0):
+			simdict.update({outerkey:simusr})
+		#print (simdict)
 		modict1={}
 		reslt=0
+		mod1=0
 
-	print ("this is simdict:",simdict)
+	#print ("this is simdict:",simdict)
 
 
 #suggesting
@@ -192,10 +212,11 @@ def recommendationalgo():
 	for key in simdict:
 		for key2 in buy1[simdict[key]]:
 			if key2 not in buy1[key]:
-			#print("Suggestion for", key,":", key2)
+				print("Suggestion for", key,":", key2)
 				if key not in suggestiondic:
 					suggestiondic[key]=key2		
 
+	#print ("suggestion dictionary:",suggestiondic)
 
 #users who have no similar users
 
@@ -211,37 +232,52 @@ def recommendationalgo():
 			for key, value in city_buy1_mapping.items():
 				if housekey == value:
 					cityy=key
+					
 			if(housecount>hcountf and cityy==city_names):
-				print ("andr agya house me kljkjdsljf:", hfh)
 				hcountf=housecount
 				hfh=house
+				#print ("andr agya house me kljkjdsljf:", hfh)
 			housecount=0
+
+	suggestiondic[s_id]=hfh
 
 	for user in simdict:
 		if user not in suggestiondic:
 			suggestiondic[user]=hfh
 		#print("Suggestion for", user,":", hfh)
 
-	print ("suggestion dictionary:   ",suggestiondic)
+	#print ("suggestion dictionary after no similar users:   ",suggestiondic)
 
 	for val in suggestiondic:
 		if val==s_id:
 			str=suggestiondic[val]
-
+	#print ("suggestion dictionary after all:",suggestiondic)
 #storing row_slug and image url
 	global suggesting_user
 	global r_slug
 	global im_url
-	suggesting_user=simdict[s_id]
-	flag_i=0	     
-	for value in url[suggesting_user][str]:
-		if flag_i==0:
-			r_slug=value
-			flag_i=flag_i+1
-		else:
-			im_url=value
-			flag_i=0
-	#sts='ashar'
+	flag_i=0
+	if s_id in simdict:
+		suggesting_user=simdict[s_id]	     
+		for value in url[suggesting_user][str]:
+			if flag_i==0:
+				r_slug=value
+				flag_i=flag_i+1
+			else:
+				im_url=value
+				flag_i=0
+	else:
+		for user in url:
+			for house in url[user]:
+				if house==suggestiondic[s_id]:
+					for value in url[user][house]:
+						if flag_i==0:
+							r_slug=value
+							flag_i=flag_i+1
+						else:
+							im_url=value
+							flag_i=0
+
 	return (str,r_slug,im_url)
 def processlocation(req):
 	global city
